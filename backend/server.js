@@ -47,8 +47,6 @@ app.use('/api/guests', guestRoutes);
 app.use('/api/reservations', reservationRoutes);
 app.use('/api/roomrates', roomRateRoutes);
 
-app.use('/api/config/paypal', (req, res) => res.send(process.env.PAYPAL_CLIENT_ID));
-
 app.use(notFound);
 app.use(errorHandler);
 

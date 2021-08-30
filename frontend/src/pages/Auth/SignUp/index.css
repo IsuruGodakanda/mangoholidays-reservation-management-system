@@ -1,0 +1,43 @@
+.sign-up-form {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.sign-up-card {
+  background: white;
+  border-radius: 30px;
+  box-shadow: 12px 12px 22px grey;
+}
+
+.sign-up-btn,
+.resend-email-btn {
+  border: none;
+  outline: none;
+  width: 100%;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.sign-up-img {
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+}
+
+@media only screen and (max-width: 800px) {
+  .sign-up-form {
+    padding: 0;
+    margin: 0;
+  }
+
+  .sign-up-img {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  .sign-up-card {
+    background: white;
+    border-radius: 30px;
+    box-shadow: 0 0 0 0;
+  }
+}
