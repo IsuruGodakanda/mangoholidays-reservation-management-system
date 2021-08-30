@@ -1,1 +1,0 @@
-# mangoholidays-reservation-management-system

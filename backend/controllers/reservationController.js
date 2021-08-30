@@ -57,11 +57,12 @@ export const makeReservation = asyncHandler(async (req, res) => {
 });
 
 // @desc    Get logged in user's reservations
-// @route   GET /api/reservations/auth?offset=&limit=&sortby=&sortdirection=
+// @route   GET /api/reservations/auth?offset=&limit=&search_term&sortby=&sortdirection=
 // @access  Private
 export const getAuthReservations = asyncHandler(async (req, res) => {
   let offset = parseInt(req.query.offset) - 1 || 0;
   let limit = parseInt(req.query.limit) || 5;
+  let search = req.query.search_term || '';
   let sortby = req.query.sortby || '';
   let sortdirection = req.query.sortdirection === 'ASC' ? 1 : -1;
 
@@ -69,7 +70,8 @@ export const getAuthReservations = asyncHandler(async (req, res) => {
 
   reservations = await Reservation.find(
     {
-      guest: req.guest._id
+      guest: req.guest._id,
+      reservation_ref_id: { $regex: new RegExp('^' + search.toLowerCase(), 'i') }
     },
     {}
   )
@@ -79,7 +81,8 @@ export const getAuthReservations = asyncHandler(async (req, res) => {
 
   const reservationCount = await Reservation.find(
     {
-      guest: req.guest._id
+      guest: req.guest._id,
+      reservation_ref_id: { $regex: new RegExp('^' + search.toLowerCase(), 'i') }
     },
     {}
   ).countDocuments();

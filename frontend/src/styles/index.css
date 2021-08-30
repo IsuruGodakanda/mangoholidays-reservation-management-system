@@ -1,0 +1,150 @@
+@import url('./bootstrap.min.css');
+@import '~react-toastify/dist/ReactToastify.css';
+@import '~react-toastify/dist/ReactToastify.css';
+
+main {
+  min-height: 80vh;
+}
+
+h1 {
+  font-size: 1.8rem;
+  padding: 1rem 0;
+}
+
+h2 {
+  font-size: 1.4rem;
+  padding: 0.5rem 0;
+}
+
+h3 {
+  padding: 1rem 0;
+}
+
+h4 {
+  text-transform: capitalize;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.h-90 {
+  height: 90%;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.rating span {
+  margin: 0, 1rem;
+}
+
+/* carousel */
+.carousel-item-next,
+.carousel-item-prev,
+.carousel-item.active {
+  display: flex;
+}
+.carousel-caption {
+  position: absolute;
+  top: 0;
+}
+
+.carousel-caption h2 {
+  color: #fff;
+}
+
+.carousel img {
+  height: 300px;
+  padding: 30px;
+  margin: 40px;
+  border-radius: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.carousel a {
+  margin: 0 auto;
+}
+@media (max-width: 900px) {
+  .carousel-caption h2 {
+    font-size: 2.5vw;
+  }
+}
+
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.zoom {
+  transition: transform 0.2s;
+}
+
+.zoom:hover {
+  -ms-transform: scale(1.1); /* IE 9 */
+  -webkit-transform: scale(1.1); /* Safari 3-8 */
+  transform: scale(1.1);
+}
+
+.spinner-card {
+  z-index: 9999;
+}
+
+.err-msg {
+  color: #a52a2a;
+  font-style: italic;
+  padding-left: 2px;
+}
+
+.err-txt-field {
+  border-bottom: 2px solid #a52a2a;
+}
+
+.form-control-border {
+  border-bottom: 2px solid #bdb7ab;
+  box-shadow: 0 0 0 0;
+}
+
+.form-control-border:focus,
+.err-txt-field:focus {
+  border-bottom: 2px solid #000;
+  box-shadow: 0 0 0 0;
+}
+
+.react-select {
+  border-bottom: 2px solid #000;
+  box-shadow: 0 0 0 0;
+}
+
+.link {
+  color: #1a1a1a;
+  text-decoration: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.link:hover {
+  color: #000;
+  text-decoration: underline;
+}
+
+.bg-purple {
+  background-color: #630059 !important;
+}
+
+.text-light {
+  color: #fff;
+}
+
+#username {
+  color: #fff;
+}

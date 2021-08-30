@@ -25,8 +25,7 @@ const guestSchema = mongoose.Schema(
       enum: ['MALE', 'FEMALE', 'OTHER']
     },
     phone: {
-      type: String,
-      required: true
+      type: String
     }
   },
   {

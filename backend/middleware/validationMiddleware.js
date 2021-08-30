@@ -19,9 +19,7 @@ export const validRegister = [
     })
     .withMessage('name must be between 8 to 32 characters')
     .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/, 'i')
-    .withMessage('Must be a valid password'),
-  check('gender', 'Gender is required').notEmpty(),
-  check('phone', 'Phone number required').notEmpty()
+    .withMessage('Must be a valid password')
 ];
 
 export const validLogin = [

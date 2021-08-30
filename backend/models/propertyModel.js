@@ -48,7 +48,21 @@ const propertySchema = mongoose.Schema(
       default: 0
     },
     location: locationSchema,
-    amenity: amenitySchema
+    amenity: amenitySchema,
+    image: {
+      type: String,
+      required: true
+    },
+    num_reviews: {
+      type: Number,
+      required: true,
+      default: 0
+    },
+    rating: {
+      type: Number,
+      required: true,
+      default: 0
+    }
   },
   {
     timestamps: true
