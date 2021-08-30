@@ -1,0 +1,39 @@
+{
+  "name": "mangoholidays-reservation-management-system",
+  "version": "1.0.0",
+  "description": "MangoHolidays (Pvt) Ltd operates a boutique hotel chain with 3 properties. They have been currently using booking.com but realized that they get direct inquiries from customers majority of the time due to its popularity after being featured on the Lonely Planet program recently. MangoHolidays wants to manage reservations for their 3 properties from their own website. The owner of Mango, Mr. Magoo wants to build a solution to Provide details of room availability and accept reservations.",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node backend/server",
+    "server": "nodemon backend/server",
+    "client": "yarn --cwd frontend start",
+    "dev": "concurrently \"yarn server\" \"yarn client\"",
+    "data:import": "node backend/seeder",
+    "data:destroy": "node backend/seeder -d"
+  },
+  "repository": "https://github.com/IsuruGodakanda/mangoholidays-reservation-management-system.git",
+  "author": "IsuruGodakanda <isurugreatcode@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@sendgrid/mail": "7.4.6",
+    "aws-sdk": "2.977.0",
+    "bcryptjs": "2.4.3",
+    "colors": "1.4.0",
+    "dotenv": "10.0.0",
+    "express": "4.17.1",
+    "express-async-handler": "1.1.4",
+    "express-validator": "6.12.1",
+    "jsonwebtoken": "8.5.1",
+    "lodash-es": "4.17.21",
+    "mongoose": "6.0.2",
+    "morgan": "1.10.0",
+    "node-fetch": "2.6.1",
+    "uuid": "8.3.2",
+    "validator": "13.6.0"
+  },
+  "devDependencies": {
+    "concurrently": "6.2.1",
+    "nodemon": "2.0.12"
+  }
+}

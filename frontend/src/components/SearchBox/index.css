@@ -1,0 +1,12 @@
+.input-clear {
+  position: absolute;
+  margin-left: 15.5rem;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  .input-clear {
+    margin-left: 20rem;
+    margin-top: -3rem;
+  }
+}
