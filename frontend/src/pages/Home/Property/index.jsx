@@ -7,6 +7,7 @@ import { FormattedNumber } from 'react-intl';
 import { filter } from 'lodash-es';
 import Rating from 'components/Rating';
 import Message from 'components/Message';
+import Text from 'components/FormFields/Text';
 import Select from 'components/FormFields/Select';
 import Calendar from 'components/FormFields/Calendar';
 import Meta from 'components/Meta';
@@ -34,6 +35,7 @@ const PropertyScreen = ({ history, match, location }) => {
   const [roomSize, setRoomSize] = useState();
   const [roomSizes, setRoomSizes] = useState(null);
   const [price, setPrice] = useState(0);
+  const [specialNote, setSpecialNote] = useState('');
   const [comment, setComment] = useState('');
   const [serverError, setServerError] = useState('');
   const auth = useSelector((state) => state.auth);
@@ -91,7 +93,8 @@ const PropertyScreen = ({ history, match, location }) => {
         room_size_type: roomSize,
         from_date: fromDate,
         to_date: toDate,
-        total_price: price
+        total_price: price,
+        special_note: specialNote
       };
 
       addReservation(payload)
@@ -156,6 +159,10 @@ const PropertyScreen = ({ history, match, location }) => {
       });
   };
 
+  const handleChange = (event) => {
+    setSpecialNote(event.target.value);
+  };
+
   useEffect(() => {
     loadHandler();
   }, [dispatch, propertyId]);
@@ -183,6 +190,15 @@ const PropertyScreen = ({ history, match, location }) => {
           <Row>
             <Col md={6}>
               <Image src={setImage(property.image)} alt={property.name} fluid />
+              <Row className='py-3'>
+                {property.amenity.has_sea_view && <Col>Sea view</Col>}
+                {property.amenity.has_lake_view && <Col>Lake view</Col>}
+                {property.amenity.has_mountain_view && <Col>Mountain view</Col>}
+                {property.amenity.has_bathtub && <Col>Bathtub</Col>}
+                {property.amenity.has_balcony && <Col>Balcony</Col>}
+                <Col>Floor area</Col>
+                {property.amenity.has_wifi && <Col>Wifi</Col>}
+              </Row>
             </Col>
             <Col md={3}>
               <ListGroup variant='flush'>
@@ -319,6 +335,14 @@ const PropertyScreen = ({ history, match, location }) => {
                     />
                   </Form.Group>
                 )}
+                <Text
+                  id='specialNote'
+                  label='Special note'
+                  type='text'
+                  placeholder='note'
+                  value={specialNote}
+                  onChange={handleChange}
+                />
               </Form>
             </Col>
           </Row>
