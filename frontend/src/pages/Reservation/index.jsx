@@ -20,7 +20,7 @@ const MyReservationsTable = ({ history }) => {
   const [reservations, setReservations] = useState([]);
   const [serverError, setServerError] = useState('');
   const [loadingReservations, setLoadingReservations] = useState(false);
-  const [paymentMethod, setPaymentMethod] = useState();
+  const [payMethod, setPayMethod] = useState('CASH_LOCATION');
   const pageSize = 5;
   const [page, setPage] = useState(1);
   const [count, setCount] = useState(0);
@@ -64,8 +64,6 @@ const MyReservationsTable = ({ history }) => {
   const paymentMethodHandler = (id, payload) => {
     dispatch(setLoaderStatus(true));
 
-    console.log(paymentMethod);
-
     setPaymentMethod(id, payload)
       .then((res) => {
         dispatch(setLoaderStatus(false));
@@ -79,8 +77,8 @@ const MyReservationsTable = ({ history }) => {
   };
 
   const handleSelectChange = (selectedOption, event) => {
-    if (event.name === 'paymentMethod') {
-      setPaymentMethod(selectedOption.value);
+    if (event.name === 'payMethod') {
+      setPayMethod(selectedOption.value);
     }
   };
 
@@ -126,37 +124,41 @@ const MyReservationsTable = ({ history }) => {
                     <td>{reservation.is_paid ? reservation.paid_at.substring(0, 10) : 'N/A'}</td>
                     <td>{reservation.is_delivered ? reservation.delivered_at.substring(0, 10) : 'N/A'}</td>
                     {reservation.payment_result ? (
-                      <td>
-                        <Modal
-                          title='Confirm Cancellation'
-                          message='Are you sure you want to cancel this reservation?'
-                          onConfirm={() => cancelHandler(reservation._id)}
-                          modalActionNode={
-                            <Button className='btn-sm' variant='danger'>
-                              Cancel
-                            </Button>
-                          }
-                        />
-                      </td>
+                      reservation.payment_result.status !== 'PAYMENT_CANCELLED' ? (
+                        <td>
+                          <Modal
+                            title='Confirm Cancellation'
+                            message='Are you sure you want to cancel this reservation?'
+                            onConfirm={() => cancelHandler(reservation._id)}
+                            modalActionNode={
+                              <Button className='btn-sm' variant='danger'>
+                                Cancel
+                              </Button>
+                            }
+                          />
+                        </td>
+                      ) : (
+                        'CANCELLED'
+                      )
                     ) : (
                       <td>
                         <Modal
                           title='Select payment method'
                           message=''
-                          onConfirm={() => paymentMethodHandler(reservation._id, { payment_method: paymentMethod })}
+                          onConfirm={() => paymentMethodHandler(reservation._id, { payment_method: payMethod })}
                           modalActionNode={
                             <Button className='btn-sm' variant='light'>
                               Select payment method
                             </Button>
                           }
                         >
-                          <Form.Group controlId='paymentMethod'>
+                          <Form.Group controlId='payMethod'>
                             <Form.Label>Payment Method</Form.Label>
                             <Select
-                              id='paymentMethod'
-                              name='paymentMethod'
+                              id='payMethod'
+                              name='payMethod'
                               placeholder='Please select payment method*'
-                              value={filter(paymentMethodOptions, ['value', paymentMethod])}
+                              value={filter(paymentMethodOptions, ['value', payMethod])}
                               onChange={handleSelectChange}
                               options={paymentMethodOptions}
                               className=''

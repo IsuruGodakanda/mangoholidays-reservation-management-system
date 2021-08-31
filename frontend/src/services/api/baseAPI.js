@@ -1,19 +1,19 @@
-import axios from 'axios'
-import { getSession, removeSession, SessionKey } from '../securityService'
+import axios from 'axios';
+import { getSession, removeSession, SessionKey } from '../securityService';
 
 const baseAPI = async (method, url, payload, otherHeaders) => {
-  let result = null
+  let result = null;
 
   const headers = getSession(SessionKey.AUTH_TOKEN)
     ? {
         Authorization: `Bearer ${getSession(SessionKey.AUTH_TOKEN)}`,
         ...otherHeaders
       }
-    : { ...otherHeaders }
+    : { ...otherHeaders };
 
-  const dataOrParams = ['POST', 'PUT'].includes(method) ? 'data' : 'params'
+  const dataOrParams = ['POST', 'PUT'].includes(method) ? 'data' : 'params';
 
-  axios.defaults.baseURL = process.env.REACT_APP_SERVER_URL
+  axios.defaults.baseURL = process.env.REACT_APP_SERVER_URL;
 
   await axios
     .request({
@@ -23,24 +23,24 @@ const baseAPI = async (method, url, payload, otherHeaders) => {
       [dataOrParams]: payload
     })
     .then((response) => {
-      result = response.data
+      result = response.data;
     })
     .catch((error) => {
-      result = error.response
+      result = error.response;
       if (
         error.response &&
         (error.response.status === 403 || (error.response.status === 401 && getSession(SessionKey.AUTH_TOKEN)))
       ) {
-        removeSession([SessionKey.AUTH_TOKEN])
-        window.location.replace('/')
+        removeSession([SessionKey.AUTH_TOKEN]);
+        window.location.replace('/');
       } else if (error.response && error.response.status === 500) {
-        throw new Error(`{"code": "${error.response.status}","message": "Something went wrong! Try again" }`)
+        throw new Error(`{"code": "${error.response.status}","message": "Something went wrong! Try again" }`);
       } else {
-        throw new Error(`{"code": "${error.response.status}","message": "${error.response.data.message}" }`)
+        throw new Error(`{"code": "${error.response.status}","message": "${error.response.data.message}" }`);
       }
-    })
+    });
 
-  return result
-}
+  return result;
+};
 
-export default baseAPI
+export default baseAPI;

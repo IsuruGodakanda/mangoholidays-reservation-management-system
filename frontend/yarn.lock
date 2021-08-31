@@ -9447,7 +9447,7 @@ react-input-autosize@^3.0.0:
   dependencies:
     prop-types "^15.5.8"
 
-react-intl@^5.20.10:
+react-intl@5.20.10:
   version "5.20.10"
   resolved "https://registry.yarnpkg.com/react-intl/-/react-intl-5.20.10.tgz#8b0f18a5b76e9f8f5a3ccc993deb0c4cef9dcde0"
   integrity sha512-zy0ZQhpjkGsKcK1BFo2HbGM/q8GBVovzoXZGQ76DowR0yr6UzQuPLkrlIrObL2zxIYiDaxaz+hUJaoa2a1xqOQ==
