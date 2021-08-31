@@ -114,7 +114,7 @@ export const updatePaymentMethod = asyncHandler(async (req, res) => {
 
       const updatedReservation = await reservation.save();
 
-      res.json({ updatedReservation });
+      res.json({ message: 'Payment method is updated' });
     } else {
       res.status(404);
       throw new Error('Guest not found');
