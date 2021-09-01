@@ -4,6 +4,10 @@
   "description": "MangoHolidays (Pvt) Ltd operates a boutique hotel chain with 3 properties. They have been currently using booking.com but realized that they get direct inquiries from customers majority of the time due to its popularity after being featured on the Lonely Planet program recently. MangoHolidays wants to manage reservations for their 3 properties from their own website. The owner of Mango, Mr. Magoo wants to build a solution to Provide details of room availability and accept reservations.",
   "main": "server.js",
   "type": "module",
+  "engines": {
+    "node": "12.22.x",
+    "npm": "6.14.x"
+  },
   "scripts": {
     "start": "node backend/server",
     "server": "nodemon backend/server",
